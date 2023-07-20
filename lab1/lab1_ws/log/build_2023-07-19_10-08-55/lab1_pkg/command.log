@@ -1,0 +1,4 @@
+Invoking command in '/home/Labs/lab1_ws/build/lab1_pkg': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/Labs/lab1_ws/build/lab1_pkg -- -j8 -l8
+Invoked command in '/home/Labs/lab1_ws/build/lab1_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/Labs/lab1_ws/build/lab1_pkg -- -j8 -l8
+Invoking command in '/home/Labs/lab1_ws/build/lab1_pkg': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/Labs/lab1_ws/build/lab1_pkg
+Invoked command in '/home/Labs/lab1_ws/build/lab1_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/Labs/lab1_ws/build/lab1_pkg

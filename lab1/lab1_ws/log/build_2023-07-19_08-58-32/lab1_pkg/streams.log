@@ -1,0 +1,67 @@
+[0.013s] Invoking command in '/home/Labs/lab1_ws/build/lab1_pkg': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/Labs/lab1_ws/src/lab1_pkg -DCMAKE_INSTALL_PREFIX=/home/Labs/lab1_ws/install/lab1_pkg
+[0.163s] -- The C compiler identification is GNU 9.4.0
+[0.247s] -- The CXX compiler identification is GNU 9.4.0
+[0.260s] -- Check for working C compiler: /usr/bin/cc
+[0.332s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.335s] -- Detecting C compiler ABI info
+[0.406s] -- Detecting C compiler ABI info - done
+[0.424s] -- Detecting C compile features
+[0.424s] -- Detecting C compile features - done
+[0.427s] -- Check for working CXX compiler: /usr/bin/c++
+[0.544s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.546s] -- Detecting CXX compiler ABI info
+[0.643s] -- Detecting CXX compiler ABI info - done
+[0.659s] -- Detecting CXX compile features
+[0.660s] -- Detecting CXX compile features - done
+[0.685s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.708s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.708s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.832s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.882s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.891s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.956s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.972s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.037s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.087s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.090s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.091s] -- Looking for pthread.h
+[1.153s] -- Looking for pthread.h - found
+[1.153s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.212s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.212s] -- Looking for pthread_create in pthreads
+[1.266s] -- Looking for pthread_create in pthreads - not found
+[1.266s] -- Looking for pthread_create in pthread
+[1.358s] -- Looking for pthread_create in pthread - found
+[1.359s] -- Found Threads: TRUE  
+[1.512s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[1.514s] -- Found ackermann_msgs: 2.0.2 (/opt/ros/foxy/share/ackermann_msgs/cmake)
+[1.577s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.649s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.650s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.651s] -- Added test 'lint_cmake' to check CMake code style
+[1.651s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[1.652s] -- Added test 'xmllint' to check XML markup files
+[1.655s] -- Configuring done
+[1.657s] -- Generating done
+[1.658s] -- Build files have been written to: /home/Labs/lab1_ws/build/lab1_pkg
+[1.663s] Invoked command in '/home/Labs/lab1_ws/build/lab1_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/Labs/lab1_ws/src/lab1_pkg -DCMAKE_INSTALL_PREFIX=/home/Labs/lab1_ws/install/lab1_pkg
+[1.665s] Invoking command in '/home/Labs/lab1_ws/build/lab1_pkg': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/Labs/lab1_ws/build/lab1_pkg -- -j8 -l8
+[1.715s] Invoked command in '/home/Labs/lab1_ws/build/lab1_pkg' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/Labs/lab1_ws/build/lab1_pkg -- -j8 -l8
+[1.744s] Invoking command in '/home/Labs/lab1_ws/build/lab1_pkg': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/Labs/lab1_ws/build/lab1_pkg
+[1.749s] -- Install configuration: ""
+[1.750s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/share/lab1_pkg/environment/pythonpath.sh
+[1.750s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/share/lab1_pkg/environment/pythonpath.dsv
+[1.750s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg
+[1.750s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg/module_to_import.py
+[1.750s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg/__init__.py
+[1.776s] Listing '/home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg'...
+[1.776s] Compiling '/home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg/__init__.py'...
+[1.776s] Compiling '/home/Labs/lab1_ws/install/lab1_pkg/lib/python3.8/site-packages/lab1_pkg/module_to_import.py'...
+[1.779s] -- Installing: /home/Labs/lab1_ws/install/lab1_pkg/lib/lab1_pkg/talker.py
+[1.779s] CMake Error at cmake_install.cmake:61 (file):
+[1.779s]   file INSTALL cannot find
+[1.779s]   "/home/Labs/lab1_ws/src/lab1_pkg/scripts/relay.py": No such file or
+[1.779s]   directory.
+[1.779s] 
+[1.779s] 
+[1.781s] Invoked command in '/home/Labs/lab1_ws/build/lab1_pkg' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/Labs/lab1_ws/build/lab1_pkg

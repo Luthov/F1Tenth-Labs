@@ -1,0 +1,6 @@
+CMake Error at cmake_install.cmake:61 (file):
+  file INSTALL cannot find
+  "/home/Labs/lab1_ws/src/lab1_pkg/scripts/relay.py": No such file or
+  directory.
+
+
