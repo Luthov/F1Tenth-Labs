@@ -1,0 +1,5 @@
+  File "/root/F1Tenth-Labs/lab2/lab2_ws/install/safety_node/lib/python3.8/site-packages/safety_node/safety_node.py", line 20
+    continue
+    ^
+SyntaxError: 'continue' not properly in loop
+
