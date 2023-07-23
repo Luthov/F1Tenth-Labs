@@ -42,12 +42,13 @@ class SafetyNode(Node):
         ranges = scan_data.ranges
         angle_min = scan_data.angle_min
         angle_increment = scan_data.angle_increment
-        threshold = 2.5 * (self.longitudinal_vel / 8.26)
+        threshold = 0.5
         angle = angle_min
         ttc = float('inf')
  
         for i in range(len(ranges)):
-            r_dot = max(-self.longitudinal_vel * math.cos(angle), 0)
+            # Fuck F1Tenth bunch of fkin liars
+            r_dot = max(self.longitudinal_vel * math.cos(angle), 0)
             r = ranges[i]
             if (r_dot != 0) and (r != 0):
                 ttc = r / r_dot
@@ -68,6 +69,9 @@ class SafetyNode(Node):
 
 def main(args=None):
     
+        for i in range(len(ranges)):
+            # Fuck F1Tenth bunch of fkin liars
+            r_dot = max(self.longitudinal_vel * math.cos(angle), 0)
     rclpy.init(args=args)
 
     safety_node = SafetyNode()
