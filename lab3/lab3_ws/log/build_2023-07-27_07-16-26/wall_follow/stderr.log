@@ -1,0 +1,5 @@
+  File "/root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/wall_follow.py", line 66
+    if (self.prev_secs == 0.0) & (self.prev_nsecs == 0.0) & (self.prev_error_1 = 0.0):
+                                                                               ^
+SyntaxError: invalid syntax
+

@@ -1,0 +1,24 @@
+[0.372s] Invoking command in '/root/F1Tenth-Labs/lab3/lab3_ws/src/wall_follow': PYTHONPATH=/root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/prefix_override:/root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/wall_follow build --build-base /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/build install --record /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/install.log --install-scripts $base/lib/wall_follow --single-version-externally-managed
+[0.497s] running egg_info
+[0.498s] writing ../../build/wall_follow/wall_follow.egg-info/PKG-INFO
+[0.498s] writing dependency_links to ../../build/wall_follow/wall_follow.egg-info/dependency_links.txt
+[0.498s] writing entry points to ../../build/wall_follow/wall_follow.egg-info/entry_points.txt
+[0.499s] writing requirements to ../../build/wall_follow/wall_follow.egg-info/requires.txt
+[0.499s] writing top-level names to ../../build/wall_follow/wall_follow.egg-info/top_level.txt
+[0.524s] reading manifest file '../../build/wall_follow/wall_follow.egg-info/SOURCES.txt'
+[0.525s] writing manifest file '../../build/wall_follow/wall_follow.egg-info/SOURCES.txt'
+[0.525s] running build
+[0.525s] running build_py
+[0.526s] copying wall_follow/wall_follow.py -> /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/build/lib/wall_follow
+[0.526s] running install
+[0.527s] running install_lib
+[0.528s] copying /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/build/lib/wall_follow/wall_follow.py -> /root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow
+[0.528s] byte-compiling /root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow/wall_follow.py to wall_follow.cpython-38.pyc
+[0.530s] running install_data
+[0.530s] running install_egg_info
+[0.531s] removing '/root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow-0.0.0-py3.8.egg-info' (and everything under it)
+[0.532s] Copying ../../build/wall_follow/wall_follow.egg-info to /root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages/wall_follow-0.0.0-py3.8.egg-info
+[0.535s] running install_scripts
+[0.549s] Installing wall_follow script to /root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/wall_follow
+[0.549s] writing list of installed files to '/root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/install.log'
+[0.568s] Invoked command in '/root/F1Tenth-Labs/lab3/lab3_ws/src/wall_follow' returned '0': PYTHONPATH=/root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/prefix_override:/root/F1Tenth-Labs/lab3/lab3_ws/install/wall_follow/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/wall_follow build --build-base /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/build install --record /root/F1Tenth-Labs/lab3/lab3_ws/build/wall_follow/install.log --install-scripts $base/lib/wall_follow --single-version-externally-managed
