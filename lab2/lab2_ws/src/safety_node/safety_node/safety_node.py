@@ -69,9 +69,6 @@ class SafetyNode(Node):
 
 def main(args=None):
     
-        for i in range(len(ranges)):
-            # Fuck F1Tenth bunch of fkin liars
-            r_dot = max(self.longitudinal_vel * math.cos(angle), 0)
     rclpy.init(args=args)
 
     safety_node = SafetyNode()
