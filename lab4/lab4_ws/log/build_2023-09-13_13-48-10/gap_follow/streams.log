@@ -1,0 +1,33 @@
+[0.282s] Invoking command in '/root/F1Tenth-Labs/lab4/lab4_ws/src/gap_follow': PYTHONPATH=/root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/prefix_override:/root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/gap_follow build --build-base /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build install --record /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/install.log --install-scripts $base/lib/gap_follow --single-version-externally-managed
+[0.369s] running egg_info
+[0.369s] creating ../../build/gap_follow/gap_follow.egg-info
+[0.369s] writing ../../build/gap_follow/gap_follow.egg-info/PKG-INFO
+[0.369s] writing dependency_links to ../../build/gap_follow/gap_follow.egg-info/dependency_links.txt
+[0.370s] writing entry points to ../../build/gap_follow/gap_follow.egg-info/entry_points.txt
+[0.370s] writing requirements to ../../build/gap_follow/gap_follow.egg-info/requires.txt
+[0.370s] writing top-level names to ../../build/gap_follow/gap_follow.egg-info/top_level.txt
+[0.371s] writing manifest file '../../build/gap_follow/gap_follow.egg-info/SOURCES.txt'
+[0.389s] reading manifest file '../../build/gap_follow/gap_follow.egg-info/SOURCES.txt'
+[0.390s] writing manifest file '../../build/gap_follow/gap_follow.egg-info/SOURCES.txt'
+[0.390s] running build
+[0.390s] running build_py
+[0.390s] creating /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build
+[0.390s] creating /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build/lib
+[0.390s] creating /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build/lib/gap_follow
+[0.390s] copying gap_follow/__init__.py -> /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build/lib/gap_follow
+[0.391s] running install
+[0.391s] running install_lib
+[0.392s] creating /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages/gap_follow
+[0.392s] copying /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build/lib/gap_follow/__init__.py -> /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages/gap_follow
+[0.393s] byte-compiling /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages/gap_follow/__init__.py to __init__.cpython-38.pyc
+[0.394s] running install_data
+[0.394s] creating /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/share/ament_index
+[0.394s] creating /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/share/ament_index/resource_index
+[0.394s] creating /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/share/ament_index/resource_index/packages
+[0.395s] copying resource/gap_follow -> /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/share/ament_index/resource_index/packages
+[0.395s] copying package.xml -> /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/share/gap_follow
+[0.395s] running install_egg_info
+[0.396s] Copying ../../build/gap_follow/gap_follow.egg-info to /root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages/gap_follow-0.0.0-py3.8.egg-info
+[0.400s] running install_scripts
+[0.411s] writing list of installed files to '/root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/install.log'
+[0.423s] Invoked command in '/root/F1Tenth-Labs/lab4/lab4_ws/src/gap_follow' returned '0': PYTHONPATH=/root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/prefix_override:/root/F1Tenth-Labs/lab4/lab4_ws/install/gap_follow/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/gap_follow build --build-base /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/build install --record /root/F1Tenth-Labs/lab4/lab4_ws/build/gap_follow/install.log --install-scripts $base/lib/gap_follow --single-version-externally-managed
