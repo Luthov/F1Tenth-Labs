@@ -22,7 +22,7 @@ class WallFollow(Node):
 
         self.pub_drive = self.create_publisher(
             AckermannDriveStamped,
-            'drive',
+            'nav/drive',
             10)
 
         self.sub_scan
