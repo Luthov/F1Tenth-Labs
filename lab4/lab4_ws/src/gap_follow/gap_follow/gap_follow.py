@@ -26,67 +26,90 @@ class GapFollow(Node):
         self.sub_scan
         
         self.drive_msg = AckermannDriveStamped()
+        self.drive_msg.drive.speed = 0.0
+        self.drive_msg.drive.steering_angle = 0.0
+
+        self.ranges = None
+        self.angle_increment = None
+        self.angle_max = None
+        self.angle_min = None
         
         self.distance_threshold = 3.0
         self.cone_size = 90 # -45 to 45 degrees
         self.car_size = 5 # metres
+        self.cone_ranges = []
+        self.no_indexes = 0
 
-    def get_index(self, scan_data, angle):
-        ranges = scan_data.ranges
+    def get_index(self, angle): # -ve angles are on the right side while +ve angles are on the left
+        
         angle_rad = angle * (math.pi / 180)
-        index = int( abs(angle_rad - scan_data.angle_max) / scan_data.angle_increment )
+        index = int( abs(self.angle_min - angle_rad) / self.angle_increment )
 
         return index
 
     # function name are usually verbs thanks 
-    def cone_processing(self, scan_data, cone_size):
+    def cone_processing(self, cone_size):
         
-        total_index = int((cone_size * (math.pi / 180)) / scan_data.angle_increment)
-        end = self.get_index(scan_data, (cone_size / 2))
-        start = end - total_index
-        cone_range = scan_data.ranges[start:end]
-        return cone_range
+        total_index = int((cone_size * (math.pi / 180)) / self.angle_increment)
+        end = self.get_index(cone_size / 2) # Taking the middle as 0 degrees, outcome would be 45 degrees
+        start = self.get_index(-cone_size / 2) # -45 degrees
+        self.cone_ranges = self.ranges[start:end]
 
     # function name are usually verbs thanks 
-    def bubble_diameter(self, distance, angle_increment):
+    def bubble_diameter(self, distance):
         
         theta = self.car_size / distance
-        no_indexes = theta / angle_increment
+        self.no_indexes = int(theta / self.angle_increment)
+        print(self.no_indexes, theta)
 
-        return no_indexes
 
-    def safety_bubble(self, ranges, car_size, threshold, angle_increment):
+    def safety_bubble(self, car_size, threshold):
         
         # indexes = []
         # for i in range(len(ranges) - 1):
         #     delta_distance = ranges[i+1] - ranges[i]
         #     if delta_distance < threshold:
         #         indexes.append(i)hostname
-        if not ranges == None:
-            shortest_dist = min(ranges)
-            shortest_dist_ind = ranges.index(shortest_dist) 
+        if self.cone_ranges:
+            shortest_dist = min(self.cone_ranges)
+            shortest_dist_ind = self.cone_ranges.index(shortest_dist) 
+            
+            self.bubble_diameter(shortest_dist)
 
-            no_indexes = self.bubble_diameter(shortest_dist, angle_increment)
-            for i in range(len(no_indexes)):
-                ranges[shortest_dist_ind - (no_indexes / 2) + i] = 0.0
+            try:
+                for i in range(self.no_indexes):
+                    print("in for loop")
+                    self.cone_ranges[int(shortest_dist_ind - (self.no_indexes / 2) + i)] = 0.0
+                    print("Yay")
+            except IndexError:
+                print("Out of range dumbass")
     
-    def get_direction(self, ranges, angle_increment):
+    def get_direction(self):
         
-        if not ranges == None:
-            furthest_dist_ind = ranges.index(max(ranges))
-            steering_angle = furthest_dist_ind * angle_increment
+        if self.cone_ranges:
+            furthest_dist_ind = self.cone_ranges.index(max(self.cone_ranges))
+            angle_size = furthest_dist_ind * self.angle_increment
 
-        return steering_angle
+            self.drive_msg.drive.steering_angle = angle_size - (self.cone_size * math.pi / 2 * 180)
+            # if angle_size > midpoint:
+            #     self.drive_msg.drive.steering_angle = angle_size - midpoint
+            # else:
+            #     self.drive_msg.drive.steering_angle = angle_size - midpoint
+        
 
     def scan_callback(self, scan_data):
         
-        ranges = scan_data.ranges
-        angle_increment = scan_data.angle_increment
+        self.ranges = scan_data.ranges
+        self.angle_max = scan_data.angle_max
+        self.angle_min = scan_data.angle_min
+        self.angle_increment = scan_data.angle_increment
 
-        cone_ranges = self.cone_processing(scan_data, self.cone_size)
-        self.safety_bubble(cone_ranges, self.car_size, self.distance_threshold, angle_increment)
-        steering_angle = self.get_direction(cone_ranges, angle_increment)
-
+        self.cone_processing(self.cone_size)
+        if self.cone_ranges: 
+            self.safety_bubble(self.car_size, self.distance_threshold)
+            self.get_direction()
+            self.pub_drive.publish(self.drive_msg)
+        
 
 def main(args=None):
 
