@@ -1,3 +1,7 @@
+# Ideas
+# 1. Take average points to calc distance from the wall and such
+# 2. Check if obstacle/wall is a below a certain distance in front of the car
+
 import rclpy
 
 from rclpy.node import Node
@@ -19,6 +23,12 @@ class WallFollow(Node):
             'scan',
             self.scan_callback,
             10)
+        
+        self.sub_odom = self.create_subscription(
+            Odometry,
+            'ego_racecar/odom',
+            self.odom_callback,
+            10)
 
         self.pub_drive = self.create_publisher(
             AckermannDriveStamped,
@@ -26,6 +36,7 @@ class WallFollow(Node):
             10)
 
         self.sub_scan
+        self.sub_odom
 
         self.drive_msg = AckermannDriveStamped()
         
@@ -38,17 +49,21 @@ class WallFollow(Node):
         self.prev_secs = 0.0
         self.prev_nsecs = 0.0
 
-        self.log = {"secs": [], "nsecs": [], "actual_distance": []}
+        self.longitudinal_vel = 0
+        self.front_dist = 0
+
+        self.log = {"steering_angle": [], "speed": [], "actual_distance": []}
 
     def getRange(self, scan_data, angle):
         ranges = scan_data.ranges
         angle_rad = angle * (math.pi / 180)
         index = int( abs(angle_rad - scan_data.angle_max) / scan_data.angle_increment )
-        #ranges = scan_data.ranges
-        #angle_rad = angle * (math.pi / 180)
-        #index = int( (angle_rad) / scan_data.angle_increment )
 
         return ranges[index]
+    
+    def odom_callback(self, odom_data):
+        self.longitudinal_vel = odom_data.twist.twist.linear.x
+
 
     def scan_callback(self, scan_data):
 
@@ -56,6 +71,8 @@ class WallFollow(Node):
         angle_min = scan_data.angle_min
         angle_increment = scan_data.angle_increment
         angle_max = scan_data.angle_max
+
+        self.front_dist = self.getRange(scan_data, 0)
 
         secs = scan_data.header.stamp.sec
         nsecs = scan_data.header.stamp.nanosec 
@@ -75,7 +92,9 @@ class WallFollow(Node):
         desired_distance = 1.2 # Metres
 
         error = desired_distance - actual_distance
-        lookahead_distance = 2.0 # Metres
+        lookahead_distance = self.longitudinal_vel * 0.50 # Metres
+        # lookahead_distance = self.longitudinal_vel * 0.15 # Metres
+
         error_1 = error + lookahead_distance * math.sin(alpha)
         
         if (self.prev_secs == 0.0) & (self.prev_nsecs == 0.0) & (self.prev_error_1 == 0.0):
@@ -96,18 +115,38 @@ class WallFollow(Node):
             self.prev_secs = secs
             self.prev_nsecs = nsecs
             
-            if (steering_angle_degrees > 0.0) & (steering_angle_degrees < 10.0):
-                self.drive_msg.drive.speed = 1.5
-            elif (steering_angle_degrees > 10.0) & (steering_angle_degrees < 20.0):
-                self.drive_msg.drive.speed = 1.0
-            else:
-                self.drive_msg.drive.speed = 0.5
+            # if (steering_angle_degrees > 0.0) & (steering_angle_degrees < 2.0):
+            #     self.drive_msg.drive.speed = 10.0
+            # elif (steering_angle_degrees > 2.0) & (steering_angle_degrees < 4.0):
+            #     self.drive_msg.drive.speed = 8.0
+            # elif (steering_angle_degrees > 4.0) & (steering_angle_degrees < 6.0):
+            #     self.drive_msg.drive.speed = 6.0
+            # elif (steering_angle_degrees > 6.0) & (steering_angle_degrees < 8.0):
+            #     self.drive_msg.drive.speed = 4.0
+            # elif (steering_angle_degrees > 8.0) & (steering_angle_degrees < 10.0):
+            #     self.drive_msg.drive.speed = 3.0
+            # elif (steering_angle_degrees > 10.0) & (steering_angle_degrees < 20.0):
+            #     self.drive_msg.drive.speed = 2.0
+            # else:
+            #     self.drive_msg.drive.speed = 1.0
             
+
+            # speed = 1 / exp(steering_angle_degrees)
+            #self.drive_msg.drive.speed = ((steering_angle_degrees / 5.2) - 3.8)**2
+
+            # steep drop
+            # self.drive_msg.drive.speed = (1 / 2)**(steering_angle_degrees - 3.9)
+
+            # less steep but still too much
+            # self.drive_msg.drive.speed = (1 / 1.5)**(steering_angle_degrees - 6.5)
+
+            self.drive_msg.drive.speed = (1 / 1.2)**(steering_angle_degrees - 15)
+
             self.pub_drive.publish(self.drive_msg)
-            self.get_logger().info(f"{alpha:.2f} | {error:.2f} | {error_1:.2f}")#alpha: {alpha:.2f} | Actual Distance: {actual_distance:.2f} | Steering Angle: {steering_angle_degrees:.2f}")
-            self.log["secs"].append(secs)
-            self.log["nsecs"].append(nsecs)
-            self.log["actual_distance"].append(actual_distance)
+            self.get_logger().info(f"steering_angle: {steering_angle_degrees:.2f} | speed: {self.longitudinal_vel:.2f} | {actual_distance:.2f} | {lookahead_distance:.2f}")
+            # self.log["steering_angle"].append(steering_angle_degrees)
+            # self.log["speed"].append(self.longitudinal_vel)
+            # self.log["actual_distance"].append(actual_distance)
 
 
 
@@ -118,7 +157,7 @@ def main(args=None):
     wall_follow = WallFollow()
 
     rclpy.spin(wall_follow)
-    print("hello")
+
     wall_follow.destroy_node()
     rclpy.shutdown()
 
