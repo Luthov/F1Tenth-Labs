@@ -1,0 +1,14 @@
+[0.131s] Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
+[0.152s] [35m[1mScanning dependencies of target marker_node[0m
+[0.166s] [ 50%] [32mBuilding CXX object CMakeFiles/marker_node.dir/src/marker_node.cpp.o[0m
+[0.772s] [01m[K/home/luthov/F1Tenth/test_ws/src/marker_node/src/marker_node.cpp:[m[K In member function ‘[01m[Kvoid MarkerPublisher::timer_callback()[m[K’:
+[0.772s] [01m[K/home/luthov/F1Tenth/test_ws/src/marker_node/src/marker_node.cpp:33:46:[m[K [01;31m[Kerror: [m[K‘[01m[KSPHERE[m[K’ is not a member of ‘[01m[Kvisualization_msgs::msg[m[K’
+[0.772s]    33 |       marker.type = visualization_msgs::msg::[01;31m[KSPHERE[m[K;
+[0.772s]       |                                              [01;31m[K^~~~~~[m[K
+[0.772s] [01m[K/home/luthov/F1Tenth/test_ws/src/marker_node/src/marker_node.cpp:34:48:[m[K [01;31m[Kerror: [m[K‘[01m[KADD[m[K’ is not a member of ‘[01m[Kvisualization_msgs::msg[m[K’
+[0.772s]    34 |       marker.action = visualization_msgs::msg::[01;31m[KADD[m[K;
+[0.772s]       |                                                [01;31m[K^~~[m[K
+[1.209s] make[2]: *** [CMakeFiles/marker_node.dir/build.make:63: CMakeFiles/marker_node.dir/src/marker_node.cpp.o] Error 1
+[1.209s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/marker_node.dir/all] Error 2
+[1.209s] make: *** [Makefile:141: all] Error 2
+[1.210s] Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
