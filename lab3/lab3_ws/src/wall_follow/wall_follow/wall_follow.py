@@ -1,5 +1,5 @@
 # Ideas
-# 1. Take average points to calc distance from the wall and such
+# 1. Take average points to calc distance from the wall
 # 2. Check if obstacle/wall is a below a certain distance in front of the car
 
 import rclpy
@@ -92,7 +92,7 @@ class WallFollow(Node):
         desired_distance = 1.2 # Metres
 
         error = desired_distance - actual_distance
-        lookahead_distance = self.longitudinal_vel * 0.50 # Metres
+        lookahead_distance = self.longitudinal_vel * 0.45 # Metres
         # lookahead_distance = self.longitudinal_vel * 0.15 # Metres
 
         error_1 = error + lookahead_distance * math.sin(alpha)
@@ -115,21 +115,6 @@ class WallFollow(Node):
             self.prev_secs = secs
             self.prev_nsecs = nsecs
             
-            # if (steering_angle_degrees > 0.0) & (steering_angle_degrees < 2.0):
-            #     self.drive_msg.drive.speed = 10.0
-            # elif (steering_angle_degrees > 2.0) & (steering_angle_degrees < 4.0):
-            #     self.drive_msg.drive.speed = 8.0
-            # elif (steering_angle_degrees > 4.0) & (steering_angle_degrees < 6.0):
-            #     self.drive_msg.drive.speed = 6.0
-            # elif (steering_angle_degrees > 6.0) & (steering_angle_degrees < 8.0):
-            #     self.drive_msg.drive.speed = 4.0
-            # elif (steering_angle_degrees > 8.0) & (steering_angle_degrees < 10.0):
-            #     self.drive_msg.drive.speed = 3.0
-            # elif (steering_angle_degrees > 10.0) & (steering_angle_degrees < 20.0):
-            #     self.drive_msg.drive.speed = 2.0
-            # else:
-            #     self.drive_msg.drive.speed = 1.0
-            
 
             # speed = 1 / exp(steering_angle_degrees)
             #self.drive_msg.drive.speed = ((steering_angle_degrees / 5.2) - 3.8)**2
@@ -139,7 +124,9 @@ class WallFollow(Node):
 
             # less steep but still too much
             # self.drive_msg.drive.speed = (1 / 1.5)**(steering_angle_degrees - 6.5)
-
+            # if self.front_dist < 2.5:
+            #     self.drive_msg.drive.speed = 2.0
+            # else:
             self.drive_msg.drive.speed = (1 / 1.2)**(steering_angle_degrees - 15)
 
             self.pub_drive.publish(self.drive_msg)
