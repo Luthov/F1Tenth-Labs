@@ -1,0 +1,32 @@
+[0.133s] Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
+[0.145s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.157s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.244s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.283s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.289s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.333s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.351s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.400s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.443s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.445s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.446s] -- Looking for pthread.h
+[0.509s] -- Looking for pthread.h - found
+[0.509s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.561s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[0.561s] -- Looking for pthread_create in pthreads
+[0.598s] -- Looking for pthread_create in pthreads - not found
+[0.598s] -- Looking for pthread_create in pthread
+[0.643s] -- Looking for pthread_create in pthread - found
+[0.644s] -- Found Threads: TRUE  
+[0.745s] -- Found visualization_msgs: 2.0.5 (/opt/ros/foxy/share/visualization_msgs/cmake)
+[0.815s] CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:42 (message):
+[0.815s]   ament_target_dependencies() the first argument must be a valid target name
+[0.815s] Call Stack (most recent call first):
+[0.815s]   CMakeLists.txt:27 (ament_target_dependencies)
+[0.815s] 
+[0.815s] 
+[0.815s] -- Configuring incomplete, errors occurred!
+[0.816s] See also "/home/luthov/F1Tenth/test_ws/build/marker_node/CMakeFiles/CMakeOutput.log".
+[0.816s] See also "/home/luthov/F1Tenth/test_ws/build/marker_node/CMakeFiles/CMakeError.log".
+[0.819s] make: *** [Makefile:266: cmake_check_build_system] Error 1
+[0.820s] Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16

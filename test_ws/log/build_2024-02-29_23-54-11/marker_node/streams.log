@@ -1,0 +1,11 @@
+[0.134s] Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
+[0.153s] [35m[1mScanning dependencies of target marker_node[0m
+[0.161s] [ 50%] [32mBuilding CXX object CMakeFiles/marker_node.dir/src/marker_node.cpp.o[0m
+[0.182s] [01m[K/home/luthov/F1Tenth/test_ws/src/marker_node/src/marker_node.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Krclcpp/rclcpp.hpp: No such file or directory
+[0.182s]     6 | #include [01;31m[K"rclcpp/rclcpp.hpp"[m[K
+[0.182s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[0.182s] compilation terminated.
+[0.182s] make[2]: *** [CMakeFiles/marker_node.dir/build.make:63: CMakeFiles/marker_node.dir/src/marker_node.cpp.o] Error 1
+[0.182s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/marker_node.dir/all] Error 2
+[0.182s] make: *** [Makefile:141: all] Error 2
+[0.184s] Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
