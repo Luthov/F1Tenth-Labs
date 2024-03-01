@@ -1,0 +1,37 @@
+[0.647s] Invoking command in '/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/src/waypoint_logger': PYTHONPATH=/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/prefix_override:/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/waypoint_logger build --build-base /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build install --record /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/install.log --install-scripts $base/lib/waypoint_logger --single-version-externally-managed
+[0.742s] running egg_info
+[0.742s] creating ../../build/waypoint_logger/waypoint_logger.egg-info
+[0.742s] writing ../../build/waypoint_logger/waypoint_logger.egg-info/PKG-INFO
+[0.742s] writing dependency_links to ../../build/waypoint_logger/waypoint_logger.egg-info/dependency_links.txt
+[0.742s] writing entry points to ../../build/waypoint_logger/waypoint_logger.egg-info/entry_points.txt
+[0.742s] writing requirements to ../../build/waypoint_logger/waypoint_logger.egg-info/requires.txt
+[0.742s] writing top-level names to ../../build/waypoint_logger/waypoint_logger.egg-info/top_level.txt
+[0.744s] writing manifest file '../../build/waypoint_logger/waypoint_logger.egg-info/SOURCES.txt'
+[0.761s] reading manifest file '../../build/waypoint_logger/waypoint_logger.egg-info/SOURCES.txt'
+[0.761s] writing manifest file '../../build/waypoint_logger/waypoint_logger.egg-info/SOURCES.txt'
+[0.761s] running build
+[0.761s] running build_py
+[0.761s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build
+[0.761s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib
+[0.761s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib/waypoint_logger
+[0.761s] copying waypoint_logger/waypoint_logger.py -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib/waypoint_logger
+[0.761s] copying waypoint_logger/__init__.py -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib/waypoint_logger
+[0.761s] running install
+[0.762s] running install_lib
+[0.762s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger
+[0.762s] copying /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib/waypoint_logger/waypoint_logger.py -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger
+[0.762s] copying /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build/lib/waypoint_logger/__init__.py -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger
+[0.762s] byte-compiling /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger/waypoint_logger.py to waypoint_logger.cpython-38.pyc
+[0.763s] byte-compiling /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger/__init__.py to __init__.cpython-38.pyc
+[0.763s] running install_data
+[0.763s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/share/ament_index
+[0.763s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/share/ament_index/resource_index
+[0.763s] creating /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/share/ament_index/resource_index/packages
+[0.763s] copying resource/waypoint_logger -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/share/ament_index/resource_index/packages
+[0.763s] copying package.xml -> /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/share/waypoint_logger
+[0.763s] running install_egg_info
+[0.764s] Copying ../../build/waypoint_logger/waypoint_logger.egg-info to /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages/waypoint_logger-0.0.0-py3.8.egg-info
+[0.764s] running install_scripts
+[0.773s] Installing waypoint_logger script to /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/waypoint_logger
+[0.773s] writing list of installed files to '/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/install.log'
+[0.784s] Invoked command in '/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/src/waypoint_logger' returned '0': PYTHONPATH=/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/prefix_override:/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/waypoint_logger/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/waypoint_logger build --build-base /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/build install --record /home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/build/waypoint_logger/install.log --install-scripts $base/lib/waypoint_logger --single-version-externally-managed

@@ -1,6 +1,0 @@
-Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/luthov/F1Tenth/test_ws/src/marker_node -DCMAKE_INSTALL_PREFIX=/home/luthov/F1Tenth/test_ws/install/marker_node
-Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/luthov/F1Tenth/test_ws/src/marker_node -DCMAKE_INSTALL_PREFIX=/home/luthov/F1Tenth/test_ws/install/marker_node
-Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
-Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/luthov/F1Tenth/test_ws/build/marker_node -- -j16 -l16
-Invoking command in '/home/luthov/F1Tenth/test_ws/build/marker_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/luthov/F1Tenth/test_ws/build/marker_node
-Invoked command in '/home/luthov/F1Tenth/test_ws/build/marker_node' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/luthov/F1Tenth/test_ws/build/marker_node

@@ -1,0 +1,16 @@
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/lib/marker_node/marker_node
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/ament_index/resource_index/package_run_dependencies/marker_node
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/ament_index/resource_index/parent_prefix_path/marker_node
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/environment/ament_prefix_path.sh
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/environment/ament_prefix_path.dsv
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/environment/path.sh
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/environment/path.dsv
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/local_setup.bash
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/local_setup.sh
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/local_setup.zsh
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/local_setup.dsv
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/package.dsv
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/ament_index/resource_index/packages/marker_node
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/cmake/marker_nodeConfig.cmake
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/cmake/marker_nodeConfig-version.cmake
+/home/luthov/F1Tenth/F1Tenth-Labs/lab6/lab6_ws/install/marker_node/share/marker_node/package.xml
