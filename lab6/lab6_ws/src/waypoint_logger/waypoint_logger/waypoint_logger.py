@@ -22,7 +22,7 @@ class WaypointLogger(Node):
             self.odom_callback,
             10)
         
-        timer_period = 1.0
+        timer_period = 0.1
         self.ready = False
         self.timer = self.create_timer(timer_period, self.timer_callback)
         

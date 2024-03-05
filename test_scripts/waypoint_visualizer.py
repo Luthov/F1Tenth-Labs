@@ -39,7 +39,6 @@ class WaypointVisualizer(Node):
             points.z = 0.0
             self.marker.points.append(points)
 
-
         timer_period = 5.0  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
