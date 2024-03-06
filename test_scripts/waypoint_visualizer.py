@@ -1,4 +1,4 @@
-import pandas as pd
+import csv
 import numpy as np
 
 import rclpy
@@ -14,11 +14,14 @@ class WaypointVisualizer(Node):
         
         self.waypoint_publisher = self.create_publisher(Marker, 'visualization_marker', 10)
         
-        waypoint_dataframe = pd.read_csv('waypoint_data.csv')
-        coordinate_arr = waypoint_dataframe[['x', 'y']].values
+        coordinate_arr = np.zeros((0, 2))
+        with open("waypoint_data.csv", newline="") as f_in:
+            reader = csv.reader(f_in)
+            for row in reader:
+                print(row)
+                coordinate_arr = np.vstack([coordinate_arr, [float(row[0]), float(row[1])]])
         
         scale = 0.2
-
         self.marker = Marker()
         self.marker.header.frame_id = "map"
         self.marker.ns = "waypoints"
@@ -32,11 +35,13 @@ class WaypointVisualizer(Node):
         self.marker.color.r = 0.0
         self.marker.color.g = 0.0
         self.marker.color.b = 1.0
+        print(len(coordinate_arr))
         for i in range(0, len(coordinate_arr)):
             points = Point()
             points.x = coordinate_arr[i][0]
             points.y = coordinate_arr[i][1]
             points.z = 0.0
+            print(points)
             self.marker.points.append(points)
 
         timer_period = 5.0  # seconds
