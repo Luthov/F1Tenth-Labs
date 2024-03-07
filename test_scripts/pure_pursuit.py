@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
+
 import rclpy
 from rclpy.node import Node
 
-from ackermann_msgs.msg import AckermannDriveStamped, AckermannDrive
+from ackermann_msgs.msg import AckermannDriveStamped
 from nav_msgs.msg import Odometry
 from visualization_msgs.msg import Marker
-from geometry_msgs.msg import TransformStamped, PointStamped
-from pyquaternion import Quaternion
 
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
 
+from pyquaternion import Quaternion
 import numpy as np
 import csv
 import math
@@ -28,28 +28,29 @@ class PurePursuit(Node):
             for row in reader:
                 self.waypoints = np.vstack([self.waypoints, [float(row[0]), float(row[1])]])
 
-        # TODO: create ROS subscribers and publishers
-
         self.sub_odom = self.create_subscription(Odometry, 'ego_racecar/odom', self.pose_callback, 10)
-        self.sub_transform = self.create_subscription(TransformStamped, 'tf', self.transform_callback, 10)
 
         self.pub_drive = self.create_publisher(AckermannDriveStamped, 'drive', 10)
         self.pub_marker = self.create_publisher(Marker, 'goal_point', 10)
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
+        self.drive_data = AckermannDriveStamped()
 
         self.lookahead_distance = 2.0
-        self.prev_waypoint_distance = float('inf')
-        self.goal_point = [0.0, 0.0]
+        self.Kp = 1.0
+        
+    
+    def visualize_goal_point(self, goal_point):
 
-        scale = 1.0
+        # Visualizing goal point wrt car frame
+        scale = 0.5
         self.goal_point_marker = Marker()
-        self.goal_point_marker.header.frame_id =  "ego_racecar/base_link" # "/map"
+        self.goal_point_marker.header.frame_id =  "ego_racecar/base_link"
         self.goal_point_marker.ns = "goal_point"
         self.goal_point_marker.id = 1
-        self.goal_point_marker.type = Marker.SPHERE  # Custom self.marker type
-        self.goal_point_marker.action = Marker.ADD # coordinate_arr        
+        self.goal_point_marker.type = Marker.SPHERE
+        self.goal_point_marker.action = Marker.ADD       
         self.goal_point_marker.scale.x = scale
         self.goal_point_marker.scale.y = scale
         self.goal_point_marker.scale.z = scale
@@ -57,11 +58,12 @@ class PurePursuit(Node):
         self.goal_point_marker.color.r = 0.0
         self.goal_point_marker.color.g = 1.0
         self.goal_point_marker.color.b = 0.0
+        self.goal_point_marker.pose.position.x = goal_point[0] 
+        self.goal_point_marker.pose.position.y = goal_point[1]  
+        self.goal_point_marker.pose.position.z = 0.0
+        self.pub_marker.publish(self.goal_point_marker)
     
-    def transform_callback(self, transform_data):
-        self.transform_data = transform_data
     
-
     def pose_callback(self, odom_data):
 
         # Convert quaternion to Euler angles
@@ -79,6 +81,8 @@ class PurePursuit(Node):
         for waypoint_index in range(len(self.waypoints)):
 
             waypoint = self.waypoints[waypoint_index]
+
+            # Calculate the distance from the car to the waypoint
             waypoint_distance = np.sqrt((waypoint[0] - odom_data.pose.pose.position.x)**2 + (waypoint[1] - odom_data.pose.pose.position.y)**2)
 
             # Calculate the vector from the car to the waypoint
@@ -95,14 +99,13 @@ class PurePursuit(Node):
                 if (waypoint_distance == self.lookahead_distance):
                     self.goal_point = waypoint
                     break
-
+            
+                # If not exactly at the lookahead distance, find a waypoint +- 0.5 meters away
                 elif (self.lookahead_distance - 0.5 < waypoint_distance < self.lookahead_distance + 0.5):
                     self.goal_point = waypoint
                     break
-
-
-        # TODO: transform goal point to vehicle frame of reference [x, y]
-
+                
+        # Getting the transform from the vehicle frame to the map frame
         vehicle_frame = 'ego_racecar/base_link'
         map_frame = 'map'
         try:
@@ -115,28 +118,28 @@ class PurePursuit(Node):
                 f'Could not transform {vehicle_frame} to {map_frame}: {ex}')
             return
 
+        # Transform the goal point to the vehicle frame
         vehicle_quaternion = Quaternion(t.transform.rotation.w, t.transform.rotation.x, t.transform.rotation.y, t.transform.rotation.z)
         rotated_goal_point = vehicle_quaternion.rotate([self.goal_point[0], self.goal_point[1], 0.0])
         goal_point_vehicle_frame = [rotated_goal_point[0] + t.transform.translation.x, rotated_goal_point[1] + t.transform.translation.y]
 
-        # # TODO: calculate curvature/steering angle
-        curvature = 2*goal_point_vehicle_frame[1]/self.lookahead_distance**2
+        # Calculate curvature/steering angle
+        curvature = 2 * goal_point_vehicle_frame[1] / self.lookahead_distance**2
+        steering_angle = self.Kp * curvature
 
-        # # TODO: publish drive message, don't forget to limit the steering angle.
-        drive_data = AckermannDriveStamped()
-        steering_angle = 1.0 * curvature
-        drive_data.drive.steering_angle = steering_angle 
-        drive_data.drive.speed = 0.2 * (1 / 1.2)**(steering_angle- 15)
+        if steering_angle > 0.36:
+            steering_angle = 0.36
+        elif steering_angle < -0.36:
+            steering_angle = -0.36
 
-        self.pub_drive.publish(drive_data)
-        # print(goal_point_vehicle_frame)
-        self.goal_point_marker.pose.position.x = goal_point_vehicle_frame[0] 
-        self.goal_point_marker.pose.position.y = goal_point_vehicle_frame[1]  
-        self.goal_point_marker.pose.position.z = 0.0
+        self.drive_data.drive.steering_angle = steering_angle
+        self.drive_data.drive.speed = 0.5 * (1 / 1.2)**(steering_angle- 15)
 
-        self.pub_marker.publish(self.goal_point_marker)
+        self.pub_drive.publish(self.drive_data)
+        self.visualize_goal_point(goal_point_vehicle_frame)
 
 def main(args=None):
+
     rclpy.init(args=args)
     pure_pursuit_node = PurePursuit()
     rclpy.spin(pure_pursuit_node)

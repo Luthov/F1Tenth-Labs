@@ -10,7 +10,7 @@ waypoints = np.zeros((0, 2))
 
 for row in reader:
     # Append the row to the numpy array
-    waypoints = np.vstack([waypoints, [row[0], row[1]]])
+    waypoints = np.vstack([waypoints, [float(row[0]), float(row[1])]])
 
 print(waypoints[0])
 

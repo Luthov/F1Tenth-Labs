@@ -35,13 +35,11 @@ class WaypointVisualizer(Node):
         self.marker.color.r = 0.0
         self.marker.color.g = 0.0
         self.marker.color.b = 1.0
-        print(len(coordinate_arr))
         for i in range(0, len(coordinate_arr)):
             points = Point()
             points.x = coordinate_arr[i][0]
             points.y = coordinate_arr[i][1]
             points.z = 0.0
-            print(points)
             self.marker.points.append(points)
 
         timer_period = 5.0  # seconds
