@@ -64,22 +64,6 @@ class PurePursuit(Node):
 
     def pose_callback(self, odom_data):
 
-        # TODO: find the current waypoint to track using methods mentioned in lecture
-        # Maybe find the closest waypoint then only look ahead from there
-        for i in range(len(self.waypoints)):
-
-            waypoint = self.waypoints[i]
-            current_waypoint_distance = np.sqrt((waypoint[0] - odom_data.pose.pose.position.x)**2 + (waypoint[1] - odom_data.pose.pose.position.y)**2)
-            
-            if current_waypoint_distance < self.prev_waypoint_distance:
-                self.closest_waypoint_index = i
-
-                self.prev_waypoint_distance = current_waypoint_distance
-
-        start = self.closest_waypoint_index
-        end = len(self.waypoints)
-
-
         # Convert quaternion to Euler angles
         quaternion = Quaternion(odom_data.pose.pose.orientation.w, 
                         odom_data.pose.pose.orientation.x, 
@@ -92,7 +76,8 @@ class PurePursuit(Node):
         # Create a unit vector for the car's heading
         car_heading = np.array([math.cos(car_heading_angle), math.sin(car_heading_angle)])
         
-        for waypoint_index in range(start, end):
+        for waypoint_index in range(len(self.waypoints)):
+
             waypoint = self.waypoints[waypoint_index]
             waypoint_distance = np.sqrt((waypoint[0] - odom_data.pose.pose.position.x)**2 + (waypoint[1] - odom_data.pose.pose.position.y)**2)
 
@@ -107,17 +92,17 @@ class PurePursuit(Node):
 
             # If the angle is less than 90 degrees, the waypoint is in front of the car
             if angle < math.pi / 2:
-                if (waypoint_distance == self.lookahead_distance) and (waypoint_index > prev_index):
+                if (waypoint_distance == self.lookahead_distance):
                     self.goal_point = waypoint
                     break
 
-                elif (self.lookahead_distance - 0.5 < waypoint_distance < self.lookahead_distance + 0.5) and (waypoint_index > prev_index):
+                elif (self.lookahead_distance - 0.5 < waypoint_distance < self.lookahead_distance + 0.5):
                     self.goal_point = waypoint
                     break
 
-            prev_index = waypoint_index
 
         # TODO: transform goal point to vehicle frame of reference [x, y]
+
         vehicle_frame = 'ego_racecar/base_link'
         map_frame = 'map'
         try:
@@ -125,25 +110,26 @@ class PurePursuit(Node):
                 vehicle_frame,
                 map_frame,
                 rclpy.time.Time())
-            # print(t)
         except TransformException as ex:
             self.get_logger().info(
                 f'Could not transform {vehicle_frame} to {map_frame}: {ex}')
             return
+
         vehicle_quaternion = Quaternion(t.transform.rotation.w, t.transform.rotation.x, t.transform.rotation.y, t.transform.rotation.z)
         rotated_goal_point = vehicle_quaternion.rotate([self.goal_point[0], self.goal_point[1], 0.0])
         goal_point_vehicle_frame = [rotated_goal_point[0] + t.transform.translation.x, rotated_goal_point[1] + t.transform.translation.y]
+
         # # TODO: calculate curvature/steering angle
         curvature = 2*goal_point_vehicle_frame[1]/self.lookahead_distance**2
 
         # # TODO: publish drive message, don't forget to limit the steering angle.
         drive_data = AckermannDriveStamped()
-        steering_angle = 0.5 * curvature
+        steering_angle = 1.0 * curvature
         drive_data.drive.steering_angle = steering_angle 
-        drive_data.drive.speed = 0.1 * (1 / 1.2)**(steering_angle- 15)
+        drive_data.drive.speed = 0.2 * (1 / 1.2)**(steering_angle- 15)
 
         self.pub_drive.publish(drive_data)
-        print(goal_point_vehicle_frame)
+        # print(goal_point_vehicle_frame)
         self.goal_point_marker.pose.position.x = goal_point_vehicle_frame[0] 
         self.goal_point_marker.pose.position.y = goal_point_vehicle_frame[1]  
         self.goal_point_marker.pose.position.z = 0.0
