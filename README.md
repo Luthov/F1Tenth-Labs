@@ -1,5 +1,2 @@
 # F1Tenth-Labs
 F1Tenth Labs
-
-
-HEHEHEHE I LOVE BEING GAY
